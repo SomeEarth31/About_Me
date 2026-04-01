@@ -1,0 +1,235 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <title>Suppablog - My Blog!</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="description" content="Template by Colorlib" />
+        <meta name="keywords" content="HTML, CSS, JavaScript, PHP" />
+        <meta name="author" content="Samarth Kumar" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <link rel="shortcut icon" href="../../images/favicon.png" />
+        <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700%7CLibre+Baskerville:400,400italic,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" type="text/css"  href='../../css/clear.css' />
+        <link rel="stylesheet" type="text/css"  href='../../css/common.css' />
+        <link rel="stylesheet" type="text/css"  href='../../css/font-awesome.min.css' />
+        <link rel="stylesheet" type="text/css"  href='../../css/carouFredSel.css' />
+        <link rel="stylesheet" type="text/css"  href='../../css/sm-clean.css' />
+        <link rel="stylesheet" type="text/css"  href='../../style.css' />
+
+        <!--[if lt IE 9]>
+                <script src="js/html5.js"></script>
+        <![endif]-->
+
+    </head>
+
+
+    <body class="single-post">
+
+        <!-- Preloader Gif -->
+        <table class="doc-loader">
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="../../images/ajax-document-loader.gif" alt="Loading...">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Left Sidebar -->
+        <div id="sidebar" class="sidebar">
+            <div class="menu-left-part">
+                <div class="search-holder">
+                    <label>
+                        <input type="search" class="search-field" placeholder="Type here to search..." value="" name="s" title="Search for:">
+                    </label>
+                </div>
+                <div class="site-info-holder">
+                    <h1 class="site-title">Samarth's Blog!</h1>
+                    <p class="site-description">
+                        Welcome to my blog! This is a collection of things 
+                        I deemed intresting enough to write about! To know more, 
+                        please check out the about page. 
+                    </p>
+                </div>
+                <nav id="header-main-menu">
+                    <ul class="main-menu sm sm-clean">
+                        <li><a href="../../index.html" class="current">Home</a></li>
+                        <li><a href="../../about.html">About</a></li>
+                        <!-- <li><a href="scroll.html">Scroll</a></li> -->
+                        <li><a href="../../contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <footer>
+                    <div class="footer-info">
+                        © 2018 SUPPABLOG HTML TEMPLATE. <br> CRAFTED WITH <i class="fa fa-heart"></i> BY <a href="https://colorlib.com">COLORLIB</a>.
+                    </div>
+                </footer>
+            </div>
+            <div class="menu-right-part">
+                <div class="logo-holder">
+                    <a href="../../index.html">
+                        <img src="../../images/logo.png" alt="Suppablog WP">
+                    </a>
+                </div>
+                <div class="toggle-holder">
+                    <div id="toggle">
+                        <div class="menu-line"></div>
+                    </div>
+                </div>
+                <div class="social-holder">
+                    <div class="social-list">
+                        <a href="https://home.iitk.ac.in/~samarthk21/" target="_blank" rel="noopener noreferrer"><i class="fa fa-globe"></i></a>
+                        <a href="https://github.com/SomeEarth31" target="_blank" rel="noopener noreferrer"><i class="fa fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/samarthkumar31/" target="_blank" rel="noopener noreferrer"><i class="fa fa-linkedin"></i></a>
+                        <a href="https://www.instagram.com/samarthplays/" target="_blank" rel="noopener noreferrer"><i class="fa fa-music"></i></a>
+                     
+                    </div>
+                </div>
+                <div class="fixed scroll-top"><i class="fa fa-caret-square-o-up" aria-hidden="true"></i></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+
+        <!-- Single Content -->
+        <div id="content" class="site-content center-relative">
+            <div class="single-post-wrapper content-1070 center-relative">
+
+                <article class="center-relative">
+                    <h1 class="entry-title">
+                        Installing GEANT4 on Linux
+                    </h1>
+                    <div class="post-info content-660 center-relative">
+                        <div class="cat-links">
+                            <ul>
+                                <li><a href="#">Guides</a></li>
+                            </ul>
+                        </div>
+                        <div class="entry-date published">11 July, 2023</div>
+                        <div class="clear"></div>
+                    </div>
+
+                    <div class="entry-content">
+                        <div class="content-wrap content-660 center-relative">
+                        <h3>Introduction:</h3>
+                        <p>The GEANT4 toolkit is the most widely used particle simulation toolkit, with applications in fields ranging from medical science to space science. It is used worldwide for both commercial and academic purposes. The toolkit, created by the international GEANT4 collaboration, is written in C++, implements Monte Carlo Simulations, and utilizes object-oriented programming. GEANT stands for 'Geometry and Tracking.'</p>    
+                        <p>We can design volumes, create particle sources, and track energy transfer. Although initially created to simulate high energy and nuclear physics experiments, it is now an invaluable tool in various other fields. All this to say, it's a pretty neat tool for researchers. So let's get started with the installation guide!</p>
+                        
+                        <h3>Some things to take care of:</h3>
+                        <p>I would like to highlight a few important points before we begin the installation process:</p>
+                        <li>This guide is for Linux ‘Ubuntu’ users, although the process would not vary much for other distributions. For windows installation, I refer you to the Linux installation guide linked in the last bullet point.</li>
+                        <li>GEANT4 does not work on Linux Installations above Ubuntu 20.04.  It requires a package called qt5-default, which has become obsolete in 22.04. Although there are methods to install all the components of the package individually and even ‘fake’ an installation, it has never worked in my experience. (Either ways, isn’t it better to be on Linux 20.04 and live happily for the next two and a half years?)</li>
+                        <li>A basic familiarity with the Linux(whatever distribution you use) command line is recommended. Although it is not required, it helps to know what is where.</li>
+                        <li>I recommend you review the GEANT4 documentation, especially the beginners and installation guides. You may skip the installation guide as it is not necessary, but it is good practice to read the provided documentation. </li>
+                        Now that these things are out of the way, let us finally get started!
+                        
+                        <h3>Installation:</h3>
+                        1.	First create a directory, called geant4, somewhere you’ll remember(non-root access directory). Go to that directory and open terminal. 
+                        <br>
+                        2.	Type in the following to update and upgrade any existing softwares and packages:
+<pre>
+$: sudo apt-get update
+$: sudo apt-get upgrade
+</pre>
+                        3.	Now, we will install the required pre-requisites for GEANT4. You may or may not have some of these already. Copy the following line:
+<pre>
+$: sudo apt-get install cmake cmake-curses-gui libexpat1-dev qt5-default 
+$: sudo apt-get install gcc g++ libxmu-dev  libeotif-dev libxerces-c-dev
+</pre>
+                        4.	Now that you have installed all the required prerequisites , we can start the installation from source. Download the latest tar.gz from the <a href="https://geant4.web.cern.ch/download/11.1.2.html"><u>official webpage</u></a>, and unpack it into the current directory. You can use the following command to do it directly
+<pre>
+$: tar xzfv  ~/Downloads/geant4-v11.1.2.tar.gz 
+    a.	Note: If your files get download to some other directory (for 
+         some reason), please use the path to there instead. 
+    b.	Replace the ‘-11.1.2-‘ version with the one that you have
+         download. 
+</pre>
+                        5.	Now if you enter the command ‘ls’ you should see the newly unpacked folder! Type the following:
+<pre>
+$: cd (press tab, then enter) [You should be in the new folder 
+    you created, type ‘ls’ to view its contents]
+</pre>
+                        6.	Type the command ‘pwd’ and copy the line (using ctr+shift+c) that shows up. Paste it in some other place and keep it minimised. We will need this line in step 8b.  Now type the command ‘cd ..’ to navigate to the previous directory .
+                        <br> 
+                        7.	We will use the cmake-gui, the cmake GUI(as the name suggests). It is considerably easier then manually typing everything out. Enter the following commands next:
+<pre>
+$: mkdir build
+$: cd build
+$: ccmake ..
+</pre>
+                        8.	This will open up a window showing the various build options. Use the up-down keys to move up and down, and press enter to select. Make sure the following are done:
+<pre>
+$: CMAKE_BUILD_TYPE: Release
+$: CMAKE_INSTALL_PREFIX: (press ctr+shift+v to paste, this may not 
+    work. If it doesn’t)Type in the line that you copied in step 6,
+    and add the following to the end: ‘-install’.  This is how it 
+    should look:
+    i.	/your_copied_path/geant4/geant4-v11.1.2-install
+    c.	GEANT4_USE_QT: On 
+    d.	GEANT4_USE_RAYTRACER_X11: On
+    e.	(Optional) GEANT4_USE_GDML: On [Helpful for reading GDML files]
+</pre>  
+                        <br>
+                        <img src="11_July_Picture1.jpg" alt="">
+                        <br>
+                        9.	Leave the rest as is. These are all the basics configurations required to start off with GEANT4. If later, you want to add or delete something , reopen this cmake-gui and select the options you want(or don’t want) and rebuild. 
+                        <br>
+                        10.	Now press ‘c’ on your keyboard.  There should be a change in the screen. If you can see the option labelled ‘Press [g] to generate and exit’, press g. If you don’t press c, until you do. 
+                        <br>
+                        11.	You should now be back in the terminal window. Press ‘ls,’ to see all the new folders added. Type in the following command: 
+<pre>
+$: make [-jN] (the part in parentheses is if you have multicore 
+    available. Replace N with the number of cores, although make
+    sure it is less then the total cores available in your machine)
+</pre>    
+                        12. This will take time. Once it is over, type the command: 
+<pre>
+$: make install
+</pre>
+                        Congratulation! You have completed the installation process! We will now perform a few tests to make sure everything has been installed correctly. 
+
+                        <h3>Tests:</h3>
+                        To test that the installation, run the example files present in GEAN4. Before you can run any code, you need to source a specific file every time you open a new terminal. Type in this command when you open a terminal:
+<pre>
+/(your-path)/geant4/geant4-v11.1.2-install/bin/geant4.sh
+</pre>
+                        To run an example:
+                        <li>Go the ‘examples’ folder present in geant4.</li>
+                        <li>Click on the folder name ‘basic’ and then click on ‘B1’.</li> 
+                        <li>Open a terminal in this folder, and source the geant4.sh file by typing the command given above. </li> 
+                        <li>GCreate a new directory: mkdir build, and go into it ($: cd build)</li>
+                        <li>Create a new directory: mkdir build, and go into it: cd build</li>
+                        <li>Now type the following commands:</li>
+<pre>
+$: cmake ..
+$: make
+$: ./exampleB1
+</pre>                    
+                        If all the steps work, a window should open. 
+                        <br>
+                        <img src="11_July_Picture2.jpg" alt="">
+                        <br>
+                        Congratulations! You have now installed GEANT4. Happy researching!
+
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </article>
+            </div>
+        </div>
+
+
+
+        <!--Load JavaScript-->
+        <script type="text/javascript" src="../../js/jquery.js"></script>
+        <script type='text/javascript' src='../../js/imagesloaded.pkgd.js'></script>
+        <script type='text/javascript' src='../../js/jquery.nicescroll.min.js'></script>
+        <script type='text/javascript' src='../../js/jquery.smartmenus.min.js'></script>
+        <script type='text/javascript' src='../../js/jquery.carouFredSel-6.0.0-packed.js'></script>
+        <script type='text/javascript' src='../../js/jquery.mousewheel.min.js'></script>
+        <script type='text/javascript' src='../../js/jquery.touchSwipe.min.js'></script>
+        <script type='text/javascript' src='../../js/jquery.easing.1.3.js'></script>
+        <script type='text/javascript' src='../../js/main.js'></script>
+    </body>
+</html>
