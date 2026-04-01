@@ -348,6 +348,9 @@ $(document).ready(function() {
 // Tab Clicking and Section Swapping
     $('.main-navigation a, .smoothscroll').on('click', function(e) {
         var targetHash = this.hash;
+		var $targetLink = $('.main-navigation a[href="' + targetHash + '"]');
+		var $targetLi = $targetLink.parent('li');
+
         var $clickedLi = $(this).parent('li');
 
         if (targetHash && $(targetHash).length > 0) {
@@ -371,6 +374,13 @@ $(document).ready(function() {
             $('.main-navigation li').removeClass('current');
             $clickedLi.addClass('current');
             moveIndicator($clickedLi);
+
+			// Highlight the correct tab and move the indicator
+            if ($targetLi.length > 0) {
+                $('.main-navigation li').removeClass('current');
+                $targetLi.addClass('current');
+                moveIndicator($targetLi);
+            }
         }
     });
 
@@ -420,7 +430,7 @@ $(document).ready(function() {
 	            moveIndicator($parentLi);
 	        }
 	    },
-	    offset: '40%' // Trigger earlier for a more responsive feel
+	    offset: '50%' // Trigger earlier for a more responsive feel
 	});
 
 
