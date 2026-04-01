@@ -433,6 +433,19 @@ $(document).ready(function() {
 	    offset: '50%' // Trigger earlier for a more responsive feel
 	});
 
+	// Smooth horizontal scroll for mobile menu tabs
+    $('.main-navigation a').on('click', function() {
+        if ($(window).width() < 768) {
+            var $container = $('.main-navigation');
+            var $item = $(this).parent();
+            var scrollLeft = $item.position().left + $container.scrollLeft() - ($container.width() / 2) + ($item.width() / 2);
+            
+            $container.animate({
+                scrollLeft: scrollLeft
+            }, 400);
+        }
+    });
+
 
 });
 

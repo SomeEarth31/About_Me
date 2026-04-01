@@ -3040,3 +3040,132 @@ body.is-scrolling::-webkit-scrollbar-thumb {
     text-transform: none;
     letter-spacing: 0.05rem;
 }
+
+/* ===================================================================
+ * RESPONSIVE OPTIMIZATIONS (Phone & Tablet)
+ * ------------------------------------------------------------------- */
+
+@media only screen and (max-width: 900px) {
+    /* --- ABOUT SECTION STACKING --- */
+    .about-flex-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .about-image {
+        margin-top: 0;
+        margin-bottom: 20px;
+    }
+
+    .about-text {
+        text-align: center;
+    }
+
+    .about-text h3 {
+        font-size: 2.8rem;
+    }
+
+    /* --- RESUME (LATEX REPLICA) TABLET FIX --- */
+    .resume-container .header {
+        flex-direction: column;
+        align-items: center !important;
+        text-align: center;
+    }
+
+    .resume-container .header-right {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .resume-container .section-box {
+        font-size: 1.2rem;
+        padding: 4px 8px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    /* --- GENERAL SECTION PADDING --- */
+    section {
+        padding-top: 80px !important;
+        padding-bottom: 60px !important;
+    }
+
+    /* --- RESUME TABLE RESPONSIVENESS --- */
+    /* Allows the LaTeX tables to scroll horizontally rather than breaking layout */
+    .resume-container table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .resume-container .exp-header {
+        flex-direction: column;
+        gap: 5px;
+        font-size: 1.35rem;
+    }
+
+    .resume-container .exp-header .date {
+        font-size: 1.2rem;
+        color: #FF0077;
+    }
+
+    /* --- PORTFOLIO & PUBLICATIONS WRAPPING --- */
+    .project-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 5px !important;
+    }
+
+    #publications .project-header h3, 
+    .project-header h3 {
+        white-space: normal !important; /* Overrides single-line rule for mobile */
+        font-size: 2.2rem !important;
+    }
+
+    .project-cat {
+        font-size: 1.1rem !important;
+    }
+
+    .project-desc {
+        font-size: 1.6rem !important;
+        line-height: 1.6 !important;
+    }
+
+    /* --- CONTACT BUTTONS --- */
+    .contact-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 320px;
+        margin: 30px auto 0;
+    }
+
+    #contact .contact-buttons .button.stroke {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    /* --- HEADER TABS --- */
+    /* Hides the pink indicator on small screens as it won't track horizontal scroll */
+    .nav-indicator {
+        display: none !important; 
+    }
+
+    .main-navigation {
+        justify-content: flex-start !important;
+        padding-left: 20px !important;
+    }
+
+    .main-navigation li a {
+        font-size: 1.3rem !important;
+        padding: 10px 10px !important;
+    }
+
+    /* --- INTRO SECTION --- */
+    .intro-content h1 {
+        font-size: 4.2rem !important;
+    }
+}
