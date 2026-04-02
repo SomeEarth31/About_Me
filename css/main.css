@@ -1861,7 +1861,7 @@ header .logo a {
 }
 
 .project-list {
-    max-width: 850px;
+    max-width: 1050px;
     margin: 0 auto;
 }
 
@@ -2674,13 +2674,15 @@ header .logo a {
     margin: 0 !important;
 }
 
-.main-navigation {
-    display: flex !important;
-    flex-direction: row !important;
-    background: transparent !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    position: relative; /* For the indicator bar */
+@media only screen and (min-width: 769px) {
+    .main-navigation {
+        display: flex !important;
+        flex-direction: row !important;
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        position: relative; /* For the indicator bar */
+    }
 }
 
 .nav-indicator {
@@ -2867,7 +2869,7 @@ header .logo a {
 
 /* --- DYNAMIC OVERLAY SCROLLBAR --- */
 
-/* Ensures the scrollbar floats over content without pushing it (overlay) */
+Ensures the scrollbar floats over content without pushing it (overlay)
 html {
     overflow-y: overlay; 
 }
@@ -2900,6 +2902,8 @@ body.is-scrolling::-webkit-scrollbar-thumb {
 ::-webkit-scrollbar-thumb:hover {
     background-color: #cc005f !important; 
 }
+
+
 
 /* --- JUSTIFIED BLOG SECTION TEXT --- */
 
@@ -3041,131 +3045,232 @@ body.is-scrolling::-webkit-scrollbar-thumb {
     letter-spacing: 0.05rem;
 }
 
-/* ===================================================================
- * RESPONSIVE OPTIMIZATIONS (Phone & Tablet)
- * ------------------------------------------------------------------- */
-
-@media only screen and (max-width: 900px) {
-    /* --- ABOUT SECTION STACKING --- */
-    .about-flex-wrapper {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-    }
-
-    .about-image {
-        margin-top: 0;
-        margin-bottom: 20px;
-    }
-
-    .about-text {
-        text-align: center;
-    }
-
-    .about-text h3 {
-        font-size: 2.8rem;
-    }
-
-    /* --- RESUME (LATEX REPLICA) TABLET FIX --- */
-    .resume-container .header {
-        flex-direction: column;
-        align-items: center !important;
-        text-align: center;
-    }
-
-    .resume-container .header-right {
-        text-align: center;
-        margin-top: 10px;
-    }
-
-    .resume-container .section-box {
-        font-size: 1.2rem;
-        padding: 4px 8px;
-    }
+/* Hide mobile trigger on desktop by default */
+.mobile-nav-trigger {
+    display: none;
 }
 
+/* ===================================================================
+ * CONSOLIDATED MOBILE & TABLET OPTIMIZATIONS
+ * ------------------------------------------------------------------- */
 @media only screen and (max-width: 768px) {
-    /* --- GENERAL SECTION PADDING --- */
-    section {
-        padding-top: 80px !important;
-        padding-bottom: 60px !important;
+    header {
+        height: 70px !important;
     }
 
-    /* --- RESUME TABLE RESPONSIVENESS --- */
-    /* Allows the LaTeX tables to scroll horizontally rather than breaking layout */
-    .resume-container table {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
+    header .row {
+        padding: 0 25px !important; /* Increased horizontal spacing */
     }
 
-    .resume-container .exp-header {
-        flex-direction: column;
-        gap: 5px;
-        font-size: 1.35rem;
+	header .top-bar {
+        display: flex !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        align-items: center;
     }
 
-    .resume-container .exp-header .date {
-        font-size: 1.2rem;
-        color: #FF0077;
+    header .logo {
+        display: block !important;
+        margin: 0 !important;
     }
 
-    /* --- PORTFOLIO & PUBLICATIONS WRAPPING --- */
-    .project-header {
-        flex-direction: column !important;
-        align-items: flex-start !important;
-        gap: 5px !important;
-    }
-
-    #publications .project-header h3, 
-    .project-header h3 {
-        white-space: normal !important; /* Overrides single-line rule for mobile */
+    header .logo a {
         font-size: 2.2rem !important;
     }
 
-    .project-cat {
-        font-size: 1.1rem !important;
+    /* DROPDOWN TRIGGER */
+    .mobile-nav-trigger {
+        display: flex ; /* Show only on mobile */
+        align-items: center;
+        gap: 12px;
+        color: #FF0077;
+        font-family: "poppins-bold", sans-serif;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        cursor: pointer;
+        padding-right: 10px;
     }
 
-    .project-desc {
-        font-size: 1.6rem !important;
-        line-height: 1.6 !important;
-    }
-
-    /* --- CONTACT BUTTONS --- */
-    .contact-buttons {
-        flex-direction: column;
-        width: 100%;
-        max-width: 320px;
-        margin: 30px auto 0;
-    }
-
-    #contact .contact-buttons .button.stroke {
-        width: 100% !important;
-        min-width: 0 !important;
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    /* --- HEADER TABS --- */
-    /* Hides the pink indicator on small screens as it won't track horizontal scroll */
-    .nav-indicator {
-        display: none !important; 
-    }
-
+    /* THE DROPDOWN MENU */
     .main-navigation {
-        justify-content: flex-start !important;
-        padding-left: 20px !important;
+        display: none; /* Initially hidden so JS can toggle it */
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.98) !important;
+        backdrop-filter: blur(15px);
+        flex-direction: column !important; /* Stack items vertically */
+        padding: 20px 0 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        z-index: 9999;
+    }
+
+    .main-navigation li {
+        width: 100%;
+        text-align: center;
+        margin: 0 !important;
     }
 
     .main-navigation li a {
-        font-size: 1.3rem !important;
-        padding: 10px 10px !important;
+        padding: 15px 0 !important;
+        font-size: 1.6rem !important;
+        display: block;
     }
 
-    /* --- INTRO SECTION --- */
-    .intro-content h1 {
-        font-size: 4.2rem !important;
+	.main-navigation.open {
+    display: flex !important;
+    flex-direction: column;
+}
+
+    .nav-indicator { display: none !important; }
+
+    /* --- ABOUT SECTION COMPACT --- */
+    #about { padding: 50px 0 !important; }
+    
+    .about-flex-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 25px !important;
     }
+
+    .intro-paragraph {
+        font-size: 1.6rem !important;
+        line-height: 1.7 !important;
+        text-align: left !important;
+        padding: 0 20px;
+    }
+
+	/* --- DESKTOP RESUME TABLE HEADERS --- */
+.resume-container th {
+    color: #000000 !important; /* Reverted to black */
+    font-family: "poppins-bold", sans-serif !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-size: 1.3rem !important; 
+    background: #ffffff !important; 
+    border-bottom: 2px solid #ccd9ff !important; 
+}
+
+	/* ===================================================================
+ * RESUME STRICT MOBILE PORTRAIT FIXES
+ * (Only triggers on vertically held phones)
+ * ------------------------------------------------------------------- */
+@media only screen and (max-width: 600px) {
+    
+    /* --- RESUME MOBILE OVERFLOW FIXES --- */
+    .resume-container .section-box,
+    .resume-container .exp-header,
+    .resume-container .header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        height: auto !important;
+        white-space: normal !important;
+    }
+
+    .resume-container .section-box small,
+    .resume-container .exp-header .date,
+    .resume-container .header-right {
+        margin-top: 5px !important;
+        text-align: left !important;
+        display: block !important;
+    }
+
+    .resume-container table,
+    .resume-container tbody,
+    .resume-container tr,
+    .resume-container th,
+    .resume-container td {
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .resume-container td {
+        border-top: none !important;
+    }
+    
+    .resume-container * {
+        word-wrap: break-word !important;
+        overflow-wrap: break-word !important;
+    }
+
+    .resume-container {
+        overflow-x: hidden !important;
+        max-width: 100% !important;
+    }
+
+    /* --- ACADEMIC TABLE MOBILE CARD LAYOUT --- */
+    .resume-container table:first-of-type tr:first-child {
+        display: none !important;
+    }
+
+    .resume-container table:first-of-type tr {
+        margin-bottom: 20px !important;
+        border: 2px solid #ccd9ff !important; 
+        border-radius: 6px;
+        display: block;
+        background: #ffffff;
+    }
+
+    .resume-container table:first-of-type td {
+        position: relative !important;
+        padding: 30px 12px 10px 12px !important; 
+        border-bottom: 1px solid #e0e0e0 !important;
+        border-left: none !important;
+        border-right: none !important;
+    }
+
+    .resume-container table:first-of-type td:last-child {
+        border-bottom: none !important;
+    }
+
+    .resume-container table:first-of-type td::before {
+        position: absolute;
+        top: 8px;
+        left: 12px;
+        font-size: 1.1rem;
+        font-family: "poppins-bold", sans-serif;
+        color: #000000; 
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .resume-container table:first-of-type td:nth-of-type(1)::before { content: "Year"; }
+    .resume-container table:first-of-type td:nth-of-type(2)::before { content: "Degree / Certificate"; }
+    .resume-container table:first-of-type td:nth-of-type(3)::before { content: "Institute"; }
+    .resume-container table:first-of-type td:nth-of-type(4)::before { content: "CPI / %"; }
+}
+
+/* --- PORTFOLIO & PUBLICATION MOBILE TYPOGRAPHY --- */
+    #portfolio .project-desc,
+    #publications .project-desc,
+    #publications .project-author {
+        text-align: left !important;
+        text-justify: auto !important; 
+        padding-right: 15px; 
+        font-size: 1.55rem !important; /* Reduces the font size to be more mobile-friendly */
+        line-height: 1.6 !important; /* Tightens the vertical space between lines */
+        letter-spacing: -0.2px !important; /* Pulls the letters slightly closer together */
+        margin-bottom: 20px !important; /* Adds a bit of space below the paragraph so sections don't blend */
+    }
+	
+	/* --- ABOUT SECTION MOBILE TYPOGRAPHY FIX --- */
+    #about .intro-paragraph,
+    #about .about-content p {
+        text-align: justify !important;      /* Removes the blocky "brick" look */
+        text-justify: auto !important; 
+        font-size: 1.55rem !important;    /* Scales down to mobile-friendly reading size */
+        line-height: 1.6 !important;      /* Optimal vertical breathing room */
+        letter-spacing: -0.2px !important; 
+        padding: 0 15px !important;       /* Keeps text from hugging the screen edges */
+    }
+
+    /* Give the Profile and Skills headings better spacing from the text */
+    #about .about-content h3 {
+        margin-top: 35px !important;
+        margin-bottom: 15px !important;
+    }
+
 }

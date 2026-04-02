@@ -150,15 +150,14 @@
 	});
 
    // nav items
-  	nav.find('li a').on("click", function() {   
+  	// nav.find('li a').on("click", function() {   
 
-   	// update the toggle button 		
-   	toggleButton.toggleClass('is-clicked'); 
-   	// fadeout the navigation panel
-   	nav.fadeOut();   		
+   	// // update the toggle button 		
+   	// toggleButton.toggleClass('is-clicked'); 
+   	// // fadeout the navigation panel
+   	// nav.fadeOut();   		
    	     
-  	});
-
+  	// });
 
    /*---------------------------------------------------- */
   	/* Highlight the current section in the navigation bar
@@ -360,8 +359,11 @@ $(document).ready(function() {
                 $('body').addClass('home-active');
                 $('section').removeClass('active-page');
 
+                // Force the "Home" section to scroll to absolute 0
+                var scrollPosition = (targetHash === "#intro") ? 0 : $(targetHash).offset().top;
+
                 $('html, body').animate({
-                    scrollTop: $(targetHash).offset().top
+                    scrollTop: scrollPosition
                 }, 800);
             } else {
                 // Standalone Pages (Resume, Portfolio, Blog, Publications)
@@ -444,6 +446,67 @@ $(document).ready(function() {
                 scrollLeft: scrollLeft
             }, 400);
         }
+    });
+
+	
+
+	var $navText = $('#current-nav-text');
+    var $mobileTrigger = $('.mobile-nav-trigger');
+    var $navMenu = $('.main-navigation');
+	if ($(window).width() < 768) {
+    $navMenu.hide();
+}
+
+	// 1. Mobile Dropdown Toggle
+	$mobileTrigger.off('click').on('click', function(e) {
+	    e.stopPropagation();
+	    $navMenu.stop(true, true).slideToggle(300);
+	});;
+
+    // Close menu when a link is clicked on mobile
+	$('.main-navigation a').off('click.mobileClose').on('click.mobileClose', function() {
+	    if ($(window).width() < 768) {
+	        $navMenu.slideUp(300);
+	        $navText.text($(this).text()); // Instantly update text on click
+	    }
+	});
+
+	$(document).on('click', function(e) {
+    if (
+        !$(e.target).closest('.main-navigation').length &&
+        !$(e.target).closest('.mobile-nav-trigger').length
+    ) {
+        $navMenu.stop(true, true).slideUp(300);
+    }
+	});
+
+    // 2. Dynamic Scroll Word Sync
+    var sections = $("#intro, #about, #contact"); 
+
+    sections.waypoint({
+        handler: function(direction) {
+            if (!$('body').hasClass('home-active')) return;
+
+            var active_id = this.element.id;
+            
+            // Map IDs to readable labels
+            var navLabels = {
+                'intro': 'Home',
+                'about': 'About',
+                'contact': 'Contact'
+            };
+
+            if (direction === "up") {
+                if (active_id === "contact") active_id = "about";
+                else if (active_id === "about") active_id = "intro";
+            }
+
+            // Sync the dropdown text with current section
+            if (navLabels[active_id] && $(window).width() < 768) {
+                $navText.text(navLabels[active_id]);
+            }
+        },
+        offset: '25%' 
     });
 
 
