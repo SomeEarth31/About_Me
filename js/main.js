@@ -354,6 +354,7 @@ $(document).ready(function() {
 
         if (targetHash && $(targetHash).length > 0) {
             // Home Flow (Intro, About, Contact)
+
             if (targetHash === "#intro" || targetHash === "#about" || targetHash === "#contact") {
                 e.preventDefault();
                 $('body').addClass('home-active');

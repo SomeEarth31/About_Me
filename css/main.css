@@ -3274,3 +3274,30 @@ body.is-scrolling::-webkit-scrollbar-thumb {
     }
 
 }
+
+/* ===================================================================
+ * HEAVY-DUTY IOS BACKGROUND IMAGE FIX
+ * ------------------------------------------------------------------- */
+/* This @supports rule specifically targets iOS devices (iPhones/iPads) */
+@supports (-webkit-touch-callout: none) {
+    #intro {
+        background-attachment: scroll !important;
+        background-position: center center !important;
+        background-size: cover !important;
+    }
+}
+
+/* ===================================================================
+ * FULL SCREEN HOME FIX (IPAD & MOBILE) - ADVANCED
+ * ------------------------------------------------------------------- */
+@media only screen and (max-width: 1024px) {
+    #intro, body.home-active #intro {
+        /* Fallback for older browsers */
+        min-height: 100vh !important;
+        height: 100vh !important; 
+        
+        /* Modern fix for dynamic toolbars (Brave, Chrome, Safari on iOS) */
+        min-height: 100dvh !important;
+        height: 100dvh !important;
+    }
+}
