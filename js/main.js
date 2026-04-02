@@ -366,6 +366,16 @@ $(document).ready(function() {
                 $('html, body').animate({
                     scrollTop: scrollPosition
                 }, 800);
+
+				// --- NEW FIX: UPDATE THE BROWSER URL ---
+                if (targetHash === "#intro") {
+                    // Clears the hash entirely for a clean base URL (e.g., /About_Me/)
+                    history.pushState("", document.title, window.location.pathname + window.location.search);
+                } else {
+                    // Updates the URL to show #about or #contact
+                    history.pushState("", document.title, targetHash);
+                }
+
             } else {
                 // Standalone Pages (Resume, Portfolio, Blog, Publications)
                 $('body').removeClass('home-active');
