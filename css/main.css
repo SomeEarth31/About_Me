@@ -3273,6 +3273,24 @@ body.is-scrolling::-webkit-scrollbar-thumb {
         margin-bottom: 15px !important;
     }
 
+	/* --- LICENSES & CERTIFICATIONS MOBILE FIX --- */
+    .resume-container .cert-grid {
+        flex-direction: column !important; /* Stacks the 3 items vertically */
+        gap: 15px !important; /* Adds breathing room between each certification */
+        padding: 0 !important;
+    }
+
+    .resume-container .cert-item {
+        display: flex !important;
+        align-items: center !important; /* Perfectly aligns the link icons with the text */
+        flex-wrap: wrap !important; /* Prevents overflow if the text is long */
+    }
+
+    .resume-container .cert-item strong {
+        margin-right: 10px !important; /* Pushes the little link icons away from the word */
+        font-size: 1.45rem !important; 
+    }
+
 }
 
 /* ===================================================================
